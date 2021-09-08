@@ -2,9 +2,7 @@
 
 Description: [Notion](https://www.notion.so/YoonStagram-beb44eb5dc0740228c7e97dd3a77e4c6)
 
-<br>
-
-![image](https://user-images.githubusercontent.com/70425484/132560662-c2ea8a92-43a6-4c2d-9d00-604e348824b8.png)
+<img width="300" alt="yoonstagram" src="https://user-images.githubusercontent.com/70425484/132561101-2acc11ea-5f5a-46d4-9382-124ab3ba7929.png">
 
 ## 수정 및 보완 필요 사항
 - 비밀번호 암호화
