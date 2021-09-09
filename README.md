@@ -1,6 +1,8 @@
 # Android-Yoonstagram
 
-Description: [Notion](https://www.notion.so/YoonStagram-beb44eb5dc0740228c7e97dd3a77e4c6)
+Description: [Notion](https://blossom-trombone-8ff.notion.site/YoonStagram-beb44eb5dc0740228c7e97dd3a77e4c6)
+
+<br>
 
 <img width="300" alt="yoonstagram" src="https://user-images.githubusercontent.com/70425484/132561101-2acc11ea-5f5a-46d4-9382-124ab3ba7929.png">
 
