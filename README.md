@@ -10,3 +10,4 @@ Description: [Notion](https://blossom-trombone-8ff.notion.site/YoonStagram-beb44
 - 비밀번호 암호화
 - 버튼 클릭 시 기능 추가하여 페이지 이동시키기
 - Email, Password 입력 칸 클릭 시 키보드가 나오는데, 다른 화면 클릭하면 키보드 내리는 기능 추가
+- 파이어베이스 연동 보충
