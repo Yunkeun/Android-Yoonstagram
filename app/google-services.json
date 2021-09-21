@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "682777671619",
+    "project_id": "yoonstagram-42608",
+    "storage_bucket": "yoonstagram-42608.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682777671619:android:e9ec2d231d514252cc2f76",
+        "android_client_info": {
+          "package_name": "kr.ac.dankook.mobile.yoonstagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682777671619-0b9smdct555pt25ft400jkockqbl36gp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.ac.dankook.mobile.yoonstagram",
+            "certificate_hash": "9568840bbeb95e1d7f11e30f366157934e02d2f9"
+          }
+        },
+        {
+          "client_id": "682777671619-7bk1tv8ab0j7hj4murj2cnmvqafft2hh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4G6K6OT5cwzf9ZfYHjFNu289foylr1Nc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682777671619-7bk1tv8ab0j7hj4murj2cnmvqafft2hh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

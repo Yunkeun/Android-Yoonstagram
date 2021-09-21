@@ -7,11 +7,11 @@
     tools:context=".LoginActivity">
 
     <ImageView
+        android:src="@drawable/yoonstagram"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/signin_layout"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/logo_title2" />
+        android:layout_alignParentTop="true"/>
 
     <LinearLayout
         android:id="@+id/signin_layout"
@@ -27,6 +27,7 @@
             android:layout_marginRight="20dp">
 
             <EditText
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email" />
@@ -39,6 +40,7 @@
             android:layout_marginRight="20dp">
 
             <EditText
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password" />
@@ -46,6 +48,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_emailLogin"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
