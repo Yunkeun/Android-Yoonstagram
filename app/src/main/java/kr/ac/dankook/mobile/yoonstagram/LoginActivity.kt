@@ -6,25 +6,32 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.activity_login.*
+import kr.ac.dankook.mobile.yoonstagram.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         auth = FirebaseAuth.getInstance()
-        btn_emailLogin.setOnClickListener {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        binding.btnEmailLogin.setOnClickListener {
             signinAndSignup()
         }
     }
 
     fun signinAndSignup() {
         // 회원가입한 결과값을 받아오기 위해서 addOnCompleteListener {  }
-        auth?.createUserWithEmailAndPassword(edt_email.text.toString(),
-            edt_password.text.toString())?.addOnCompleteListener {
+        auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(),
+            binding.edtPassword.text.toString())?.addOnCompleteListener {
                 task ->
             if (task.isSuccessful) {
                 moveMainPage(task.result?.user)
@@ -42,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun signinEmail() {
-        auth?.createUserWithEmailAndPassword(edt_email.text.toString(), edt_password.text.toString())
+        auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(), binding.edtPassword.text.toString())
             ?.addOnCompleteListener {
                     task ->
                 if (task.isSuccessful) {
