@@ -76,21 +76,29 @@ class LoginActivity : AppCompatActivity() {
 
     fun signinAndSignup() {
         // 회원가입한 결과값을 받아오기 위해서 addOnCompleteListener {  }
-        auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(),
-            binding.edtPassword.text.toString())?.addOnCompleteListener {
-                task ->
-            if (task.isSuccessful) {
-                moveMainPage(task.result?.user)
-            } else {
-                //Login if you have account
-                if (task.exception?.message.equals("The email address is already in use by another account.")) {
-                    signinEmail()
-                }
-                //Show the error message
-                else {
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+        var userEmail = binding.edtEmail.text.toString()
+        var emailArr = userEmail.split("@")
+        if ((emailArr[0].length == 8) and (emailArr[1].equals("dankook.ac.kr"))) {
+            auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(),
+                binding.edtPassword.text.toString())?.addOnCompleteListener {
+                    task ->
+                if (task.isSuccessful) {
+                    moveMainPage(task.result?.user)
+                } else {
+                    //Login if you have account
+                    if (task.exception?.message.equals("The email address is already in use by another account.")) {
+                        signinEmail()
+                    }
+                    //Show the error message
+                    else {
+                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                    }
                 }
             }
+        }
+        else {
+            Toast.makeText(this, "This email is not a valid DKU email", Toast.LENGTH_LONG).show()
+            return
         }
     }
 
