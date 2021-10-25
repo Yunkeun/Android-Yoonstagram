@@ -3,9 +3,8 @@
 Description: [Notion](https://blossom-trombone-8ff.notion.site/YoonStagram-beb44eb5dc0740228c7e97dd3a77e4c6)
 
 ### 수정 사항
-- title logo 폰트 수정
-- 비밀번호 암호화
-- SIGNUP OR SIGNIN BY EMAIL 버튼 클릭 시 파이어베이스 Authentication에 유저 정보 저장
+- 회원가입 창 생성
+- DKU email 주소만 허락되게 회원가입 로직 구현
 
 <br>
 
