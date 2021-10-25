@@ -3,6 +3,7 @@ package kr.ac.dankook.mobile.yoonstagram
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.Auth
@@ -13,12 +14,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kr.ac.dankook.mobile.yoonstagram.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var database: DatabaseReference
+
     var googleSignInClient : GoogleSignInClient? = null
     var GOOGLE_LOGIN_CODE = 9001
 
@@ -26,11 +32,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // init
         auth = FirebaseAuth.getInstance()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        database = Firebase.database.reference
 
+        // Signup 버튼 클릭 시 회원가입 화면으로 이동
+        binding.btnEmailSignup.setOnClickListener {
+            startActivity(Intent(this,SignupActivity::class.java))
+        }
         binding.btnEmailLogin.setOnClickListener {
-            signinAndSignup()
+            signinEmail()
         }
         binding.googleSignInButton.setOnClickListener {
             googleLogin()
@@ -74,40 +86,18 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    fun signinAndSignup() {
-        // 회원가입한 결과값을 받아오기 위해서 addOnCompleteListener {  }
-        var userEmail = binding.edtEmail.text.toString()
-        var emailArr = userEmail.split("@")
-        if ((emailArr[0].length == 8) and (emailArr[1].equals("dankook.ac.kr"))) {
-            auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(),
-                binding.edtPassword.text.toString())?.addOnCompleteListener {
-                    task ->
-                if (task.isSuccessful) {
-                    moveMainPage(task.result?.user)
-                } else {
-                    //Login if you have account
-                    if (task.exception?.message.equals("The email address is already in use by another account.")) {
-                        signinEmail()
-                    }
-                    //Show the error message
-                    else {
-                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-        }
-        else {
-            Toast.makeText(this, "This email is not a valid DKU email", Toast.LENGTH_LONG).show()
-            return
-        }
-    }
-
     fun signinEmail() {
-        auth?.createUserWithEmailAndPassword(binding.edtEmail.text.toString(), binding.edtPassword.text.toString())
+        auth?.signInWithEmailAndPassword(binding.edtEmail.text.toString(), binding.edtPassword.text.toString())
             ?.addOnCompleteListener {
                     task ->
                 if (task.isSuccessful) {
-                    // Login
+                    // 데이터베이스를 읽으면 Log를 찍고 토스트메시지로 userName님 환영합니다. 를 출력한다.
+                    database.child("users").child(task.result?.user!!.uid).get().addOnSuccessListener {
+                        Log.i("firebase", "Got value ${it.value}")
+                        Toast.makeText(this, "${it.child("userName").value}님 환영합니다!", Toast.LENGTH_LONG).show()
+                    }.addOnFailureListener{
+                        Log.e("firebase", "Error getting data", it)
+                    }
                     moveMainPage(task.result?.user)
                 } else {
                     //Show the error message

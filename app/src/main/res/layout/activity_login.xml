@@ -41,11 +41,11 @@
                 android:layout_marginRight="20dp">
 
                 <EditText
-                    android:inputType="textPassword"
                     android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password" />
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -56,8 +56,19 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="20dp"
+
+                android:text="SIGNIN"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEmailSignup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="35dp"
-                android:text="@string/signin_email"
+                android:text="SIGNUP"
                 android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatButton
